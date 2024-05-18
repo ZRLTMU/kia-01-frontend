@@ -113,6 +113,8 @@
 	let area;
 	let price = '...'
 	let selected;
+	let renovated = false;
+	let outsideSpace = false;
 	function handleSubmit() {
 		let url =
             PUBLIC_BASE_URL +
@@ -121,7 +123,11 @@
             "&area=" +
             area +
             "&rooms=" +
-            rooms;
+            rooms +
+			"&renovated=" +
+			renovated +
+			"&outsideSpace=" +
+			outsideSpace;
         console.log(url);
         axios.get(url).then((response) => {
             price = 'CHF ' + response.data;
@@ -138,6 +144,18 @@
 	  </div>
 	  <div class="col col-lg-2">
 		<input type="number" class="form-control" placeholder="rooms" aria-label="rooms" bind:value={rooms}>
+	  </div>
+	  <div class="col col-lg-2">
+		<input class="form-check-input" type="checkbox" id="renovatedCheck" bind:checked={renovated}>
+		<label class="form-check-label" for="renovatedCheck">
+			Renovated?
+		</label>
+	  </div>
+	  <div class="col col-lg-2">
+		<input class="form-check-input" type="checkbox" id="osCheck" bind:checked={outsideSpace}>
+		<label class="form-check-label" for="osCheck">
+			Outside Space?
+		</label>
 	  </div>
 	  <div class="col col-lg-2">
 
